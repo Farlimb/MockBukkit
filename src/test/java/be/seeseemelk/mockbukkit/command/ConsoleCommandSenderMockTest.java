@@ -254,4 +254,6 @@ class ConsoleCommandSenderMockTest
 		assertThrowsExactly(NullPointerException.class, () -> sender.spigot().sendMessage((BaseComponent[]) null));
 	}
 
+
+
 }

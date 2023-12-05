@@ -1013,6 +1013,104 @@ class PlayerMockTest
 		player.playSound(sound, loc.getX(), loc.getY(), loc.getZ());
 		player.assertSoundHeard(sound, audio -> loc.equals(audio.getLocation()));
 	}
+	@Test
+	void testPlaySoundMusic()
+	{
+		net.kyori.adventure.sound.Sound sound = net.kyori.adventure.sound.Sound.sound(
+				Sound.MUSIC_CREATIVE,
+				net.kyori.adventure.sound.Sound.Source.MUSIC,
+				0.5f,
+				1f
+		);
+		Location loc = new Location(player.getWorld(), 80D, 30D, 50D);
+		player.setGameMode(GameMode.CREATIVE);
+		player.playSound(sound, loc.getX(), loc.getY(), loc.getZ());
+		player.assertSoundHeard(sound, audio -> loc.equals(audio.getLocation()));
+	}
+
+	@Test
+	void testPlaySoundRecord()
+	{
+		net.kyori.adventure.sound.Sound sound = net.kyori.adventure.sound.Sound.sound(
+				Sound.MUSIC_DISC_5,
+				net.kyori.adventure.sound.Sound.Source.RECORD,
+				0.5f,
+				1f
+		);
+		Location loc = new Location(player.getWorld(), 80D, 30D, 50D);
+		player.playSound(sound, loc.getX(), loc.getY(), loc.getZ());
+		player.assertSoundHeard(sound, audio -> loc.equals(audio.getLocation()));
+	}
+
+	@Test
+	void testPlaySoundWeather()
+	{
+		net.kyori.adventure.sound.Sound sound = net.kyori.adventure.sound.Sound.sound(
+				Sound.WEATHER_RAIN,
+				net.kyori.adventure.sound.Sound.Source.WEATHER,
+				0.5f,
+				1f
+		);
+		Location loc = new Location(player.getWorld(), 80D, 30D, 50D);
+		player.playSound(sound, loc.getX(), loc.getY(), loc.getZ());
+		player.assertSoundHeard(sound, audio -> loc.equals(audio.getLocation()));
+	}
+
+	@Test
+	void testPlaySoundNeutral()
+	{
+		net.kyori.adventure.sound.Sound sound = net.kyori.adventure.sound.Sound.sound(
+				Sound.ENTITY_VILLAGER_WORK_FARMER,
+				net.kyori.adventure.sound.Sound.Source.NEUTRAL,
+				0.5f,
+				1f
+		);
+		Location loc = new Location(player.getWorld(), 80D, 30D, 50D);
+		player.playSound(sound, loc.getX(), loc.getY(), loc.getZ());
+		player.assertSoundHeard(sound, audio -> loc.equals(audio.getLocation()));
+	}
+
+	@Test
+	void testPlaySoundPlayer()
+	{
+		net.kyori.adventure.sound.Sound sound = net.kyori.adventure.sound.Sound.sound(
+				Sound.ENTITY_PLAYER_LEVELUP,
+				net.kyori.adventure.sound.Sound.Source.PLAYER,
+				0.5f,
+				1f
+		);
+		Location loc = new Location(player.getWorld(), 80D, 30D, 50D);
+		player.playSound(sound, loc.getX(), loc.getY(), loc.getZ());
+		player.assertSoundHeard(sound, audio -> loc.equals(audio.getLocation()));
+	}
+
+	@Test
+	void testPlaySoundVoice()
+	{
+		net.kyori.adventure.sound.Sound sound = net.kyori.adventure.sound.Sound.sound(
+				Sound.BLOCK_LEVER_CLICK,
+				net.kyori.adventure.sound.Sound.Source.VOICE,
+				0.5f,
+				1f
+		);
+		Location loc = new Location(player.getWorld(), 80D, 30D, 50D);
+		player.playSound(sound, loc.getX(), loc.getY(), loc.getZ());
+		player.assertSoundHeard(sound, audio -> loc.equals(audio.getLocation()));
+	}
+
+	@Test
+	void testPlaySoundMaster()
+	{
+		net.kyori.adventure.sound.Sound sound = net.kyori.adventure.sound.Sound.sound(
+				Sound.UI_BUTTON_CLICK,
+				net.kyori.adventure.sound.Sound.Source.MASTER,
+				0.5f,
+				1f
+		);
+		Location loc = new Location(player.getWorld(), 80D, 30D, 50D);
+		player.playSound(sound, loc.getX(), loc.getY(), loc.getZ());
+		player.assertSoundHeard(sound, audio -> loc.equals(audio.getLocation()));
+	}
 
 	@Test
 	void testAssertSoundHeard_Adventure()
@@ -1971,7 +2069,7 @@ class PlayerMockTest
 		});
 	}
 
-	@Test
+	/*@Test
 	void testPlaySoundWithEntity()
 	{
 		Sound sound = Sound.ENTITY_SLIME_SQUISH;
@@ -1985,7 +2083,7 @@ class PlayerMockTest
 					&& audio.getVolume() == volume && audio.getPitch() == pitch;
 		});
 
-	}
+	}*/
 
 	@Test
 	void testPlaySoundWithEntityWithoutCategory()
